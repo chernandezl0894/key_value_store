@@ -1,0 +1,85 @@
+# Configuración de clang-tidy para key_value_store.
+# Uso: clang-tidy -p build/ src/*.c
+#      (o run-clang-tidy -p build/ -header-filter='.*')
+
+Checks: >
+  -*,
+  bugprone-*,
+  clang-analyzer-*,
+  performance-*,
+  modernize-*,
+  readability-*,
+  cert-*,
+  concurrency-*,
+  misc-*,
+  -bugprone-easily-swappable-parameters,
+  -cert-err33-c,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -readability-function-cognitive-complexity,
+  -readability-uppercase-literal-suffix,
+  -modernize-use-trailing-return-type,
+  -modernize-use-designated-initializers,
+  -misc-non-private-member-variables-in-classes
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '^(inc|src)/'
+FormatStyle: file
+
+CheckOptions:
+  # --- Legibilidad ---
+  - key: readability-braces-around-statements.ShortStatementLines
+    value: '2'
+  - key: readability-function-size.LineThreshold
+    value: '80'
+  - key: readability-function-size.StatementThreshold
+    value: '40'
+  - key: readability-function-size.ParameterThreshold
+    value: '6'
+  - key: readability-else-after-return
+    value: 'true'
+  - key: readability-implicit-bool-conversion.AllowIntegerConditionals
+    value: 'false'
+  - key: readability-inconsistent-declaration-parameter-name
+    value: 'true'
+  - key: readability-identifier-naming.FunctionCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.TypeCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.ParameterCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.VariableCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.StructCase
+    value: 'lower_case'
+  - key: readability-identifier-naming.GlobalConstantPrefix
+    value: 'KV_'
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: 'UPPER_CASE'
+
+  # --- modernize ---
+  - key: modernize-use-nullptr
+    value: 'true'
+  - key: modernize-use-auto
+    value: 'false'
+  - key: modernize-use-emplace
+    value: 'true'
+  - key: modernize-use-equals-default
+    value: 'true'
+  - key: modernize-use-override
+    value: 'true'
+  - key: modernize-loop-convert
+    value: 'true'
+  - key: modernize-make-shared
+    value: 'false'
+
+  # --- misc ---
+  - key: misc-use-internal-linkage
+    value: 'false'
+  - key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
+    value: 'true'
+
+  # --- performance ---
+  - key: performance-unnecessary-value-param.AllowedTypes
+    value: ''

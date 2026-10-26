@@ -1,0 +1,17 @@
+-std=c11
+-Iinc
+-Wall
+-Wextra
+-Wpedantic
+-Wshadow
+-Wconversion
+-Wsign-conversion
+-Wstrict-prototypes
+-Wmissing-prototypes
+-Wold-style-definition
+-Wmissing-declarations
+-Wcast-align
+-Wformat=2
+-Wundef
+-fno-common
+-fno-strict-aliasing

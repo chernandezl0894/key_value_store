@@ -1,0 +1,65 @@
+# Formato de código para key_value_store.
+# Compatible con clang-format >= 14.
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# --- Indentación ---
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+ContinuationIndentWidth: 2
+IndentCaseLabels: false
+IndentPPDirectives: None
+
+# --- Límites de línea ---
+ColumnLimit: 80
+
+# --- Espaciado ---
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignOperands: Align
+AlignTrailingComments: true
+
+# --- Llaves ---
+BreakBeforeBraces: Attach
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortEnumsOnASingleLine: true
+
+# --- Punteros y referencias ---
+PointerAlignment: Right
+DerivePointerAlignment: false
+ReferenceAlignment: Pointer
+
+# --- Includes ---
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve
+IncludeCategories:
+  - Regex: '^"(llvm|llvm-c|clang|clang-c)/'
+    Priority: 2
+  - Regex: '^(<|"(gtest|gmock|isl|json)/)'
+    Priority: 3
+  - Regex: '.*'
+    Priority: 1
+
+# --- Funciones y clases ---
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 2
+IndentExternBlock: AfterExternBlock
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+ReflowComments: true
+SortUsingDeclarations: true
